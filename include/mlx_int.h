@@ -5,131 +5,105 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gicamerl <gicamerl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/19 19:32:28 by gicamerl          #+#    #+#             */
-/*   Updated: 2018/04/25 19:52:06 by gicamerl         ###   ########.fr       */
+/*   Created: 2018/04/25 16:51:24 by gicamerl          #+#    #+#             */
+/*   Updated: 2018/04/25 19:50:28 by gicamerl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-**	1. Settings for MiniLibX
-*/
-
 #ifndef MLX_INT_H
 # define MLX_INT_H
-# include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include <sys/mman.h>
-# include <X11/Xlib.h>
-# include <X11/Xutil.h>
-# include <sys/ipc.h>
-# include <sys/shm.h>
-# include <X11/extensions/XShm.h>
-# include <X11/XKBlib.h>
+# define MAX_EVENT 32
+# define MAX_PIXEL_NB 200000
+# define UNIQ_BPP 4
+
+# define FONT_WIDTH 10
+# define FONT_HEIGHT 20
+
+typedef int	(*t_func)();
 
 /*
-** # include <X11/xpm.h>
+**	1. Structures
 */
 
-# define MLX_TYPE_SHM_PIXMAP 3
-# define MLX_TYPE_SHM 2
-# define MLX_TYPE_XIMAGE 1
-# define MLX_MAX_EVENT LASTEvent
-# define ENV_DISPLAY "DISPLAY"
-# define LOCALHOST "localhost"
-# define ERR_NO_TRUECOLOR "MinilibX ERR: No TrueColor Visual available.\n"
-# define WARN_SHM_ATTACH "MinilibX ERR: X server can't attach shared memory.\n"
+typedef struct		s_glsl_info
+{
+	GLuint		pixel_vshader;
+	GLuint		pixel_fshader;
+	GLuint		pixel_program;
+	GLint		loc_pixel_position;
+	GLint		loc_pixel_texture;
+	GLint		loc_pixel_winhalfsize;
+	GLuint		image_vshader;
+	GLuint		image_fshader;
+	GLuint		image_program;
+	GLint		loc_image_position;
+	GLint		loc_image_winhalfsize;
+	GLint		loc_image_texture;
+	GLint		loc_image_pos;
+	GLint		loc_image_size;
+	GLuint		font_vshader;
+	GLuint		font_fshader;
+	GLuint		font_program;
+	GLint		loc_font_position;
+	GLint		loc_font_winhalfsize;
+	GLint		loc_font_texture;
+	GLint		loc_font_color;
+	GLint		loc_font_posinwin;
+	GLint		loc_font_posinatlas;
+	GLint		loc_font_atlassize;
+}					t_glsl_info;
+
+typedef struct		s_mlx_img_list
+{
+	int						width;
+	int						height;
+	char					*buffer;
+	GLfloat					vertexes[8];
+	struct s_mlx_img_list	*next;
+}					t_mlx_img_list;
+
+typedef struct		s_mlx_img_ctx
+{
+	GLuint					texture;
+	GLuint					vbuffer;
+	t_mlx_img_list			*img;
+	struct s_mlx_img_ctx	*next;
+}					t_mlx_img_ctx;
+
+typedef struct		s_mlx_win_list
+{
+	void					*winid;
+	t_mlx_img_ctx			*img_list;
+	int						nb_flush;
+	int						pixmgt;
+	struct s_mlx_win_list	*next;
+}					t_mlx_win_list;
+
+typedef struct		s_mlx_ptr
+{
+	void				*appid;
+	t_mlx_win_list		*win_list;
+	t_mlx_img_list		*img_list;
+	void				(*loop_hook)(void *);
+	void				*loop_hook_data;
+	void				*loop_timer;
+	t_mlx_img_list		*font;
+	int					main_loop_active;
+}					t_mlx_ptr;
 
 /*
-**	2. Structures
+**	2. Functions
 */
 
-typedef	struct	s_xpm_col
-{
-	int			name;
-	int			col;
-}				t_xpm_col;
-
-typedef struct	s_col_name
-{
-	char		*name;
-	int			color;
-}				t_col_name;
-
-typedef struct	s_event_list
-{
-	int			mask;
-	int			(*hook)();
-	void		*param;
-}				t_event_list;
-
-typedef struct	s_win_list
-{
-	Window				window;
-	GC					gc;
-	struct s_win_list	*next;
-	int					(*mouse_hook)();
-	int					(*key_hook)();
-	int					(*expose_hook)();
-	void				*mouse_param;
-	void				*key_param;
-	void				*expose_param;
-	t_event_list		hooks[MLX_MAX_EVENT];
-}				t_win_list;
-
-typedef struct	s_img
-{
-	XImage			*image;
-	Pixmap			pix;
-	GC				gc;
-	int				size_line;
-	int				bpp;
-	int				width;
-	int				height;
-	int				type;
-	int				format;
-	char			*data;
-	XShmSegmentInfo	shm;
-}				t_img;
-
-typedef struct	s_xvar
-{
-	Display		*display;
-	Window		root;
-	int			screen;
-	int			depth;
-	Visual		*visual;
-	Colormap	cmap;
-	int			private_cmap;
-	t_win_list	*win_list;
-	int			(*loop_hook)();
-	void		*loop_param;
-	int			use_xshm;
-	int			pshm_format;
-	int			do_flush;
-	int			decrgb[6];
-}				t_xvar;
-
-/*
-**	3. Functions
-*/
-
-int				mlx_int_do_nothing();
-int				mlx_int_get_good_color();
-int				mlx_int_find_in_pcm();
-int				mlx_int_anti_resize_win();
-int				mlx_int_wait_first_expose();
-int				mlx_int_rgb_conversion();
-int				mlx_int_deal_shm();
-int				mlx_int_get_visual();
-int				mlx_int_set_win_event_mask();
-int				mlx_int_str_str();
-int				mlx_int_str_str_cote();
-void			*mlx_int_new_xshm_image();
-char			**mlx_int_str_to_wordtab();
-void			*mlx_new_image();
-int				shm_att_pb();
+int					mlx_shaders(t_glsl_info *glsl);
+char				**mlx_int_str_to_wordtab(char *str);
+int					mlx_int_str_str(char *str, char *find, int len);
+int					mlx_int_str_str_cote(char *str, char *find, int len);
+int					mlx_destroy_image(t_mlx_ptr *mlx_ptr,
+		t_mlx_img_list *img_ptr);
+void				*mlx_new_image();
+void				*mlx_xpm_to_image(t_mlx_ptr *xvar, char **xpm_data,
+		int *width, int *height);
+int					mlx_do_sync(t_mlx_ptr *mlx_ptr);
 
 #endif

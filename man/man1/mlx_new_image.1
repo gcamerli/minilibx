@@ -141,7 +141,7 @@ one byte for each component (see
 .B mlx_pixel_put
 manual). This must be translated to fit the
 .I bits_per_pixel
-requirement of the image, and make the color understandable to the X-Server.
+requirement of the image, and make the color understandable to the graphical system.
 That is the purpose of the
 .B mlx_get_color_value
 () function. It takes a standard RGB
@@ -155,7 +155,7 @@ least significant bits of this value can be stored in the image.
 
 Keep in mind that the least significant bits position depends on the local
 computer's endian. If the endian of the image (in fact the endian of
-the X-Server's computer) differs from the local endian, then the value should
+the X-Server's computer for remote X11 display) differs from the local endian, then the value should
 be transformed before being used.
 
 .SH XPM IMAGES
@@ -189,4 +189,4 @@ as an image identifier.
 mlx(3), mlx_new_window(3), mlx_pixel_put(3), mlx_loop(3)
 
 .SH AUTHOR
-Copyright ol@ - 2002-2014 - Olivier Crouzet
+Copyright ol@ - 2002-2015 - Olivier Crouzet

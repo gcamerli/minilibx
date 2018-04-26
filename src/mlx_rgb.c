@@ -1,21 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   mlx_rgb.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gicamerl <gicamerl@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/26 16:31:32 by gicamerl          #+#    #+#             */
-/*   Updated: 2018/04/26 16:31:38 by gicamerl         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 /*
 ** This is a generated file with rgb2c.pl and rgb.txt from
 ** the XFree86 distribution.
 */
-
-#include "mlx_int.h"
 
 struct s_col_name mlx_col_name[] =
 {

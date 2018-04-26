@@ -43,9 +43,10 @@ MiniLibX - Handle events
 .I void *mlx_ptr, int (*funct_ptr)(), void *param
 );
 
-.SH X-WINDOW EVENTS
+.SH EVENTS
 
-The X-Window system is bi-directionnal. On one hand, the program sends orders to
+Both X-Window and MacOSX graphical systems are bi-directionnal.
+On one hand, the program sends orders to
 the screen to display pixels, images, and so on. On the other hand,
 it can get information from the keyboard and mouse associated to
 the screen. To do so, the program receives "events" from the keyboard or the
@@ -114,7 +115,8 @@ is the address specified in the mlx_*_hook calls. This address is never
 used nor modified by the MiniLibX. On key and mouse events, additional
 information is passed:
 .I keycode
-tells you which key is pressed (look for the X11 include file "keysymdef.h"),
+tells you which key is pressed (X11 : look for the include file "keysymdef.h",
+MacOS : create a small software and find out by yourself),
 (
 .I x
 ,
@@ -124,12 +126,12 @@ tells you which key is pressed (look for the X11 include file "keysymdef.h"),
 tells you which mouse button was pressed.
 
 .SH GOING FURTHER WITH EVENTS
-The MiniLibX provides a much generic access to all X-Window events. The
+The MiniLibX provides a much generic access to all type of events. The
 .I mlx.h
 include define
 .B mlx_hook()
 in the same manner mlx_*_hook functions work. The event and mask values
-will be taken from the X11 include file "X.h".
+will be taken from the X11 include file "X.h" (even for MacOSX, for compatibility purposes)
 
 See source code of mlx_int_param_event.c to find out how the MiniLibX will
 call your own function for a specific event.
@@ -138,4 +140,4 @@ call your own function for a specific event.
 mlx(3), mlx_new_window(3), mlx_pixel_put(3), mlx_new_image(3)
 
 .SH AUTHOR
-Copyright ol@ - 2002-2014 - Olivier Crouzet
+Copyright ol@ - 2002-2015 - Olivier Crouzet
