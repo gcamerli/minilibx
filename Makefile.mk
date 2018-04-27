@@ -6,7 +6,7 @@
 #    By: gicamerl <gicamerl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/19 17:02:16 by gicamerl          #+#    #+#              #
-#    Updated: 2018/04/27 12:43:37 by gicamerl         ###   ########.fr        #
+#    Updated: 2018/04/27 13:22:45 by gicamerl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,14 +111,18 @@ clean:
 	then \
 		$(RM) -rf $(OBJD); \
 		printf "$(BLUE) [OBJ]$(WHITE) Clean minilibx objects\n"; \
+	else \
+		printf "$(BLUE) [OBJ]$(WHITE) No minilibx objects\n"; \
 	fi;
 
 # Clean in depth
 fclean: clean
-	@if [ -e $(NAME) ] || [ -e libmlx_$(HT).a ] || [ -e Makefile.gen ]; \
+	@if [ -e $(NAME) ] || [ -e libmlx_$(HT).a ]; \
 	then \
-		$(RM) -f $(NAME) libmlx_$(HT).a Makefile.gen; \
+		$(RM) -f $(NAME) libmlx_$(HT).a; \
 		printf "$(RED) [LIB]$(WHITE) Clean build files\n"; \
+	else \
+		printf "$(RED) [LIB]$(WHITE) No build files\n"; \
 	fi;
 
 # Remake

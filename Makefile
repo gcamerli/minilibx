@@ -6,7 +6,7 @@
 #    By: gicamerl <gicamerl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/19 19:11:39 by gicamerl          #+#    #+#              #
-#    Updated: 2018/04/25 20:28:13 by gicamerl         ###   ########.fr        #
+#    Updated: 2018/04/27 13:22:16 by gicamerl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,6 @@ clean:
 	./configure clean
 
 fclean:
-	./configure fclean
+	./configure fclean && rm Makefile.gen
 
 re: fclean all
