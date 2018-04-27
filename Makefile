@@ -6,12 +6,12 @@
 #    By: gicamerl <gicamerl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/26 21:48:44 by gicamerl          #+#    #+#              #
-#    Updated: 2018/04/26 21:48:49 by gicamerl         ###   ########.fr        #
+#    Updated: 2018/04/27 12:18:42 by gicamerl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Non-file targets
-.PHONY: all clean fclean re
+.PHONY: all norme clean fclean re
 
 # Compiler and binaries
 CC			=	/usr/bin/gcc
