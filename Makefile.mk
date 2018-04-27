@@ -6,12 +6,12 @@
 #    By: gicamerl <gicamerl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/19 17:02:16 by gicamerl          #+#    #+#              #
-#    Updated: 2018/04/26 20:59:06 by gicamerl         ###   ########.fr        #
+#    Updated: 2018/04/27 12:43:37 by gicamerl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Non-file targets
-.PHONY: all clean fclean re
+.PHONY: all norme clean fclean re
 
 # Empty variables 
 INCS		=	%%%%
