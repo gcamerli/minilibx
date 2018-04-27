@@ -24,7 +24,9 @@ To compile **MinilibX**, execute:
 $ make
 ```
 
-You can also run the **configure** script to generate the appropriate `Makefile.gen`.
+The compilation produce `libmlx.a` and `libmlx_$(HOSTTYPE).a` files.
+
+Alternatively, you can also run the **configure** script to generate the appropriate `Makefile.gen` and the .a files.
 
 ### **Usage**
 
@@ -37,6 +39,11 @@ To add the **MinilibX** to your system you can copy:
 ### **Notes**
 
 This version detects which operating system you are using to properly compile the library. You can use it under **FreeBSD** and **Linux** distros.
+
+Personal additions to the original version are:
+
++ Customization of the `Makefile` and the `configure` script
++ .c and .h files cleaned according to the **42 Norme**
 
 ### **Credits**
 
