@@ -6,7 +6,7 @@
 #    By: gicamerl <gicamerl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/26 21:48:44 by gicamerl          #+#    #+#              #
-#    Updated: 2018/04/27 12:18:42 by gicamerl         ###   ########.fr        #
+#    Updated: 2018/04/27 13:27:18 by gicamerl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,6 +96,8 @@ clean:
 		$(RM) -rf $(OBJD); \
 		$(RM) -rf $(MBJD); \
 		printf "$(BLUE) [OBJ]$(WHITE) Clean minilibx objects\n"; \
+	else \
+		printf "$(BLUE) [OBJ]$(WHITE) No minilibx objects\n"; \
 	fi;
 
 # Clean in depth
@@ -104,6 +106,8 @@ fclean: clean
 	then \
 		$(RM) -f $(NAME); \
 		printf "$(RED) [LIB]$(WHITE) Clean build files\n"; \
+	else \
+		printf "$(RED) [LIB]$(WHITE) No build files\n"; \
 	fi;
 
 # Remake
