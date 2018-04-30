@@ -6,14 +6,15 @@
 /*   By: gicamerl <gicamerl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 16:27:21 by gicamerl          #+#    #+#             */
-/*   Updated: 2018/04/26 16:29:09 by gicamerl         ###   ########.fr       */
+/*   Updated: 2018/04/30 16:57:40 by gicamerl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"mlx_int.h"
+#include "mlx_int.h"
 
-int	mlx_int_param_undef()
+int	mlx_int_param_undef(void)
 {
+	return (0);
 }
 
 int	mlx_int_param_KeyPress(t_xvar *xvar, XEvent *ev, t_win_list *win)
@@ -32,8 +33,8 @@ int	mlx_int_param_KeyRelease(t_xvar *xvar, XEvent *ev, t_win_list *win)
 
 int	mlx_int_param_ButtonPress(t_xvar *xvar, XEvent *ev, t_win_list *win)
 {
-	win->hooks[ButtonPress].hook(ev->xbutton.button, ev->xbutton.x, ev->xbutton.y,
-			win->hooks[ButtonPress].param);
+	win->hooks[ButtonPress].hook(ev->xbutton.button, ev->xbutton.x,
+			ev->xbutton.y, win->hooks[ButtonPress].param);
 }
 
 int	mlx_int_param_ButtonRelease(t_xvar *xvar, XEvent *ev, t_win_list *win)
@@ -45,7 +46,7 @@ int	mlx_int_param_ButtonRelease(t_xvar *xvar, XEvent *ev, t_win_list *win)
 
 int	mlx_int_param_MotionNotify(t_xvar *xvar, XEvent *ev, t_win_list *win)
 {
-	win->hooks[MotionNotify].hook(ev->xbutton.x,ev->xbutton.y,
+	win->hooks[MotionNotify].hook(ev->xbutton.x, ev->xbutton.y,
 			win->hooks[MotionNotify].param);
 }
 

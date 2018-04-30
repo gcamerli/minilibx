@@ -6,13 +6,13 @@
 /*   By: gicamerl <gicamerl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 21:12:53 by gicamerl          #+#    #+#             */
-/*   Updated: 2018/04/26 16:26:26 by gicamerl         ###   ########.fr       */
+/*   Updated: 2018/04/30 17:16:10 by gicamerl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx_int.h"
 
-int	mlx_int_str_str(char *str, char *find, int len)
+int		mlx_int_str_str(char *str, char *find, int len)
 {
 	int		len_f;
 	int		pos;
@@ -23,7 +23,7 @@ int	mlx_int_str_str(char *str, char *find, int len)
 	if (len_f > len)
 		return (-1);
 	pos = 0;
-	while (*(str+len_f - 1))
+	while (*(str + len_f - 1))
 	{
 		s = str;
 		f = find;
@@ -36,7 +36,7 @@ int	mlx_int_str_str(char *str, char *find, int len)
 	return (-1);
 }
 
-int	mlx_int_str_str_cote(char *str, char *find, int len)
+int		mlx_int_str_str_cote(char *str, char *find, int len)
 {
 	int		len_f;
 	int		pos;
@@ -44,15 +44,13 @@ int	mlx_int_str_str_cote(char *str, char *find, int len)
 	char	*f;
 	int		cote;
 
-	len_f = strlen(find);
-	if (len_f > len)
+	if ((len_f = ft_strlen(find)) > len)
 		return (-1);
 	cote = 0;
 	pos = 0;
-	while (*(str+len_f - 1))
+	while (*(str + len_f - 1))
 	{
-		if (*str == '"')
-			cote = 1 - cote;
+		cote = *str == '"' ? 1 - cote : cote;
 		if (!cote)
 		{
 			s = str;

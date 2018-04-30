@@ -6,7 +6,7 @@
 /*   By: gicamerl <gicamerl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 16:16:42 by gicamerl          #+#    #+#             */
-/*   Updated: 2018/04/26 16:21:52 by gicamerl         ###   ########.fr       */
+/*   Updated: 2018/04/30 17:18:00 by gicamerl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	*mlx_int_xpm_f_image(t_xvar *xvar, int *width, int *height,
 		return ((void *)0);
 	if (img2)
 		XDestroyImage(img2);
-
 	if (!(im2 = (void *)mlx_new_image(xvar, img1->width, img1->height)))
 	{
 		XDestroyImage(img1);
@@ -43,13 +42,13 @@ void	*mlx_int_xpm_f_image(t_xvar *xvar, int *width, int *height,
 		XDestroyImage(img1);
 		return (im2);
 	}
-	if (im2->type==MLX_TYPE_SHM_PIXMAP)
+	if (im2->type == MLX_TYPE_SHM_PIXMAP)
 	{
 		XFreePixmap(xvar->display, im2->pix);
 		im2->pix = XCreatePixmap(xvar->display, xvar->root,
 				*width, *height, xvar->depth);
 	}
-	if (im2->type>MLX_TYPE_XIMAGE)
+	if (im2->type > MLX_TYPE_XIMAGE)
 	{
 		XShmDetach(xvar->display, &(im2->shm));
 		shmdt(im2->data);
@@ -63,7 +62,7 @@ void	*mlx_int_xpm_f_image(t_xvar *xvar, int *width, int *height,
 	return (im2);
 }
 
-int	mlx_int_egal_img(XImage *img1,XImage *img2)
+int	mlx_int_egal_img(XImage *img1, XImage *img2)
 {
 	if (img1->width != img2->width || img1->height != img2->height ||
 			img1->xoffset != img2->xoffset || img1->format != img2->format ||
@@ -76,7 +75,7 @@ int	mlx_int_egal_img(XImage *img1,XImage *img2)
 			img1->bits_per_pixel != img2->bits_per_pixel ||
 			img1->red_mask != img2->red_mask ||
 			img1->green_mask != img2->green_mask ||
-			img1->blue_mask != img2->blue_mask )
+			img1->blue_mask != img2->blue_mask)
 		return (0);
 	return (1);
 }
@@ -88,7 +87,7 @@ void	*mlx_xpm_file_to_image(t_xvar *xvar, char *filename,
 				filename));
 }
 
-void	*mlx_xpm_to_image(t_xvar *xvar,char **data,int *width,int *height)
+void	*mlx_xpm_to_image(t_xvar *xvar, char **data, int *width, int *height)
 {
 	return (mlx_int_xpm_f_image(xvar, width, height, XpmCreateImageFromData,
 				(void *)data));

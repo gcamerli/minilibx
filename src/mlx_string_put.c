@@ -6,14 +6,14 @@
 /*   By: gicamerl <gicamerl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 16:02:07 by gicamerl          #+#    #+#             */
-/*   Updated: 2018/04/26 16:03:20 by gicamerl         ###   ########.fr       */
+/*   Updated: 2018/04/30 17:28:40 by gicamerl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx_int.h"
 
 int	mlx_string_put(t_xvar *xvar, t_win_list *win,
-			       int x, int y, int color, char *string)
+		int x, int y, int color, char *string)
 {
 	XGCValues	xgcv;
 
