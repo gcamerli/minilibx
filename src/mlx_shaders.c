@@ -6,7 +6,7 @@
 /*   By: gicamerl <gicamerl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 17:46:48 by gicamerl          #+#    #+#             */
-/*   Updated: 2018/04/26 16:36:48 by gicamerl         ###   ########.fr       */
+/*   Updated: 2018/04/30 18:46:08 by gicamerl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 #include <OpenGL/gl3.h>
 #include "mlx_int.h"
 
-void display_log(GLuint object, void (*param_func)(), void (*getlog_func)())
+void	display_log(GLuint object, void (*param_func)(), void (*getlog_func)())
 {
-	GLint log_length;
-	char *log;
+	GLint	log_length;
+	char	*log;
 
 	param_func(object, GL_INFO_LOG_LENGTH, &log_length);
 	log = malloc(log_length);
@@ -28,11 +28,11 @@ void display_log(GLuint object, void (*param_func)(), void (*getlog_func)())
 	free(log);
 }
 
-int mlx_shaders_pixel(t_glsl_info *glsl)
+int		mlx_shaders_pixel(t_glsl_info *glsl)
 {
-	char  *source;
-	int	length;
-	GLint action_ok;
+	char	*source;
+	int		length;
+	GLint	action_ok;
 
 	glsl->pixel_vshader = glCreateShader(GL_VERTEX_SHADER);
 	source = strdup("#version 110 \n"
@@ -47,14 +47,13 @@ int mlx_shaders_pixel(t_glsl_info *glsl)
 	glShaderSource(glsl->pixel_vshader, 1, (const GLchar**)&source, &length);
 	glCompileShader(glsl->pixel_vshader);
 	free(source);
-
 	glGetShaderiv(glsl->pixel_vshader, GL_COMPILE_STATUS, &action_ok);
-	if (!action_ok) {
+	if (!action_ok)
+	{
 		fprintf(stderr, "Failed to compile pixel vshader :\n");
 		display_log(glsl->pixel_vshader, glGetShaderiv, glGetShaderInfoLog);
 		return (1);
 	}
-
 	glsl->pixel_fshader = glCreateShader(GL_FRAGMENT_SHADER);
 	source = strdup("#version 110 \n"
 			"uniform sampler2D texture;"
@@ -67,36 +66,33 @@ int mlx_shaders_pixel(t_glsl_info *glsl)
 	glShaderSource(glsl->pixel_fshader, 1, (const GLchar**)&source, &length);
 	glCompileShader(glsl->pixel_fshader);
 	free(source);
-
 	glGetShaderiv(glsl->pixel_fshader, GL_COMPILE_STATUS, &action_ok);
-	if (!action_ok) {
+	if (!action_ok)
+	{
 		fprintf(stderr, "Failed to compile pixel fshader :\n");
 		display_log(glsl->pixel_fshader, glGetShaderiv, glGetShaderInfoLog);
 		return (1);
 	}
-
 	glsl->pixel_program = glCreateProgram();
 	glAttachShader(glsl->pixel_program, glsl->pixel_vshader);
 	glAttachShader(glsl->pixel_program, glsl->pixel_fshader);
 	glLinkProgram(glsl->pixel_program);
-
 	glGetProgramiv(glsl->pixel_program, GL_LINK_STATUS, &action_ok);
-	if (!action_ok) {
+	if (!action_ok)
+	{
 		fprintf(stderr, "Failed to link pixel shader program:\n");
 		display_log(glsl->pixel_program, glGetProgramiv, glGetProgramInfoLog);
 		return (1);
 	}
-
 	glFlush();
-
 	return (0);
 }
 
-int mlx_shaders_image(t_glsl_info	*glsl)
+int		mlx_shaders_image(t_glsl_info *glsl)
 {
-	char  *source;
-	int	length;
-	GLint action_ok;
+	char	*source;
+	int		length;
+	GLint	action_ok;
 
 	glsl->image_vshader = glCreateShader(GL_VERTEX_SHADER);
 	source = strdup("#version 110 \n"
@@ -116,14 +112,13 @@ int mlx_shaders_image(t_glsl_info	*glsl)
 	glShaderSource(glsl->image_vshader, 1, (const GLchar**)&source, &length);
 	glCompileShader(glsl->image_vshader);
 	free(source);
-
 	glGetShaderiv(glsl->image_vshader, GL_COMPILE_STATUS, &action_ok);
-	if (!action_ok) {
+	if (!action_ok)
+	{
 		fprintf(stderr, "Failed to compile image vshader :\n");
 		display_log(glsl->image_vshader, glGetShaderiv, glGetShaderInfoLog);
 		return (1);
 	}
-
 	glsl->image_fshader = glCreateShader(GL_FRAGMENT_SHADER);
 	source = strdup("#version 110 \n"
 			"uniform sampler2D texture;"
@@ -136,36 +131,33 @@ int mlx_shaders_image(t_glsl_info	*glsl)
 	glShaderSource(glsl->image_fshader, 1, (const GLchar**)&source, &length);
 	glCompileShader(glsl->image_fshader);
 	free(source);
-
 	glGetShaderiv(glsl->image_fshader, GL_COMPILE_STATUS, &action_ok);
-	if (!action_ok) {
+	if (!action_ok)
+	{
 		fprintf(stderr, "Failed to compile image fshader :\n");
 		display_log(glsl->image_fshader, glGetShaderiv, glGetShaderInfoLog);
 		return (1);
 	}
-
 	glsl->image_program = glCreateProgram();
 	glAttachShader(glsl->image_program, glsl->image_vshader);
 	glAttachShader(glsl->image_program, glsl->image_fshader);
 	glLinkProgram(glsl->image_program);
-
 	glGetProgramiv(glsl->image_program, GL_LINK_STATUS, &action_ok);
-	if (!action_ok) {
+	if (!action_ok)
+	{
 		fprintf(stderr, "Failed to link image shader program:\n");
 		display_log(glsl->image_program, glGetProgramiv, glGetProgramInfoLog);
 		return (1);
 	}
-
 	glFlush();
-
 	return (0);
 }
 
-int	mlx_shaders_font(t_glsl_info *glsl)
+int		mlx_shaders_font(t_glsl_info *glsl)
 {
-	char  *source;
-	int	length;
-	GLint action_ok;
+	char	*source;
+	int		length;
+	GLint	action_ok;
 
 	glsl->font_vshader = glCreateShader(GL_VERTEX_SHADER);
 	source = strdup("#version 110 \n"
@@ -186,14 +178,13 @@ int	mlx_shaders_font(t_glsl_info *glsl)
 	glShaderSource(glsl->font_vshader, 1, (const GLchar**)&source, &length);
 	glCompileShader(glsl->font_vshader);
 	free(source);
-
 	glGetShaderiv(glsl->font_vshader, GL_COMPILE_STATUS, &action_ok);
-	if (!action_ok) {
+	if (!action_ok)
+	{
 		fprintf(stderr, "Failed to compile font vshader :\n");
 		display_log(glsl->font_vshader, glGetShaderiv, glGetShaderInfoLog);
 		return (1);
 	}
-
 	glsl->font_fshader = glCreateShader(GL_FRAGMENT_SHADER);
 	source = strdup("#version 110 \n"
 			"uniform sampler2D texture;"
@@ -207,32 +198,30 @@ int	mlx_shaders_font(t_glsl_info *glsl)
 	glShaderSource(glsl->font_fshader, 1, (const GLchar**)&source, &length);
 	glCompileShader(glsl->font_fshader);
 	free(source);
-
 	glGetShaderiv(glsl->font_fshader, GL_COMPILE_STATUS, &action_ok);
-	if (!action_ok) {
+	if (!action_ok)
+	{
 		fprintf(stderr, "Failed to compile font fshader :\n");
 		display_log(glsl->font_fshader, glGetShaderiv, glGetShaderInfoLog);
 		return (1);
 	}
-
 	glsl->font_program = glCreateProgram();
 	glAttachShader(glsl->font_program, glsl->font_vshader);
 	glAttachShader(glsl->font_program, glsl->font_fshader);
 	glLinkProgram(glsl->font_program);
-
 	glGetProgramiv(glsl->font_program, GL_LINK_STATUS, &action_ok);
-	if (!action_ok) {
+	if (!action_ok)
+	{
 		fprintf(stderr, "Failed to link font shader program:\n");
 		display_log(glsl->font_program, glGetProgramiv, glGetProgramInfoLog);
 		return (1);
 	}
-
 	glFlush();
-
 	return (0);
 }
 
 int	mlx_shaders(t_glsl_info *glsl)
 {
-	return (mlx_shaders_pixel(glsl) + mlx_shaders_image(glsl) + mlx_shaders_font(glsl));
+	return (mlx_shaders_pixel(glsl) + mlx_shaders_image(glsl) +
+			mlx_shaders_font(glsl));
 }
