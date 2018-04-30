@@ -6,7 +6,7 @@
 #    By: gicamerl <gicamerl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/26 21:48:44 by gicamerl          #+#    #+#              #
-#    Updated: 2018/04/27 13:27:18 by gicamerl         ###   ########.fr        #
+#    Updated: 2018/04/30 19:08:44 by gicamerl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,10 @@ $(MBJD)%.o: $(SRCD)%.m
 norme:
 	norminette $(INCD)mlx.h
 	norminette $(INCD)mlx_int.h
+	norminette $(SRCD)mlx_int_str_to_wordtab.c
+	norminette $(SRCD)mlx_rgb.c
+	norminette $(SRCD)mlx_shaders.c
+	norminette $(SRCD)mlx_xpm.c
 
 # Clean objects
 clean:
