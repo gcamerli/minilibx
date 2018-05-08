@@ -6,7 +6,7 @@
 /*   By: gicamerl <gicamerl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 17:46:48 by gicamerl          #+#    #+#             */
-/*   Updated: 2018/04/30 18:46:08 by gicamerl         ###   ########.fr       */
+/*   Updated: 2018/05/08 16:39:28 by gicamerl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,7 +220,7 @@ int		mlx_shaders_font(t_glsl_info *glsl)
 	return (0);
 }
 
-int	mlx_shaders(t_glsl_info *glsl)
+int		mlx_shaders(t_glsl_info *glsl)
 {
 	return (mlx_shaders_pixel(glsl) + mlx_shaders_image(glsl) +
 			mlx_shaders_font(glsl));
