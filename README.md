@@ -47,13 +47,13 @@ Personal additions to the original version are:
 
 The following `src` files present errors related to the way they were coded. You can ignore them all:
 
-+ `mlx_hook.c`
++ **mlx_hook.c**
 
 ```text
 Error (line 15): mlx_hook have 5 parameters
 ```
 
-+ `mlx_int_param_event.c`
++ **mlx_int_param_event.c**
 
 ```text
 Error: 8 functions in the file
@@ -66,44 +66,44 @@ Error (line 53, col 0): mlx_int_param_Expose not unixcase
 Error (line 64, col 7): global named mlx_int_param_event is not well prefixed
 ```
 
-+ `mlx_int_str_to_wordtab.c`
++ **mlx_int_str_to_wordtab.c**
 
 ```text
 Error (line 68): function mlx_int_str_to_wordtab has 38 lines
 ```
 
-+ `mlx_lib_xpm.c`
++ **mlx_lib_xpm.c**
 
 ```text
 Error (line 15): mlx_int_xpm_f_image have 5 parameters
 Error (line 15): function mlx_int_xpm_f_image has 45 lines
 ```
 
-+ `mlx_new_window.c`
++ **mlx_new_window.c**
 
 ```text
 Error (line 27): function mlx_new_window has 27 lines
 ```
 
-+ `mlx_put_image_to_window.c`
++ **mlx_put_image_to_window.c**
 
 ```text
 Error (line 15): mlx_put_image_to_window have 5 parameters
 ```
 
-+ `mlx_loop.c`
++ **mlx_loop.c**
 
 ```text
 Error (line 15, col 14): global named mlx_int_param_event is not well prefixed
 ```
 
-+ `mlx_string_put.c`
++ **mlx_string_put.c**
 
 ```text
 Error (line 15): mlx_string_put have 6 parameters
 ```
 
-+ `mlx_new_image.c`
++ **mlx_new_image.c**
 
 ```text
 Error (line 21, col 5): mlx_X_error not unixcase
@@ -112,13 +112,13 @@ Error (line 34): function mlx_int_new_xshm_image has 67 lines
 Error (line 105): function mlx_int_new_image has 26 lines
 ```
 
-+ `mlx_pixel_put.c`
++ **mlx_pixel_put.c**
 
 ```text
 Error (line 15): mlx_pixel_put have 5 parameters
 ```
 
-+ `mlx_xpm.c`
++ **mlx_xpm.c**
 
 ```text
 Error: 9 functions in the file
