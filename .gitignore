@@ -1,0 +1,15 @@
+# Object files
+obj
+*.o
+
+# Precompiled Headers
+*.gch
+
+# Libraries
+*.a
+
+# Binaries
+*.out
+
+# Debug files
+*.dSYM
