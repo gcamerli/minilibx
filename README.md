@@ -15,14 +15,14 @@ This version uses instead MacOSX's **Cocoa** window system (**AppKit**) and the 
 
 The following `src` files present errors related to the way they were coded. You can ignore them all:
 
-+ mlx_int_str_to_wordtab.c
++ **mlx_int_str_to_wordtab.c**
 
 ```text
 Error (line 40): function mlx_int_str_str_cote has 27 lines
 Error (line 71): function mlx_int_str_to_wordtab has 38 lines
 ```
 
-+ mlx_shaders.c
++ **mlx_shaders.c**
 
 ```text
 Error (line 31): function mlx_shaders_pixel has 56 lines
@@ -31,7 +31,7 @@ Error (line 156): function mlx_shaders_font has 63 lines
 Error (line 172): line has 90 characters
 ```
 
-+ mlx_xpm.c
++ **mlx_xpm.c**
 
 ```text
 Error: 9 functions in the file
