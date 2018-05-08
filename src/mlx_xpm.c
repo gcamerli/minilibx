@@ -6,7 +6,7 @@
 /*   By: gicamerl <gicamerl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 20:48:33 by gicamerl          #+#    #+#             */
-/*   Updated: 2018/04/30 18:33:19 by gicamerl         ###   ########.fr       */
+/*   Updated: 2018/05/08 16:53:03 by gicamerl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -250,7 +250,7 @@ void	*mlx_int_parse_xpm(t_xvar *xvar, void *info, int info_size,
 	return (img);
 }
 
-int	mlx_int_file_get_rid_comment(char *ptr, int size)
+int		mlx_int_file_get_rid_comment(char *ptr, int size)
 {
 	int	com_begin;
 	int	com_end;

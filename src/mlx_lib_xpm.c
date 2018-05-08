@@ -6,7 +6,7 @@
 /*   By: gicamerl <gicamerl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 16:16:42 by gicamerl          #+#    #+#             */
-/*   Updated: 2018/04/30 17:18:00 by gicamerl         ###   ########.fr       */
+/*   Updated: 2018/05/08 17:00:33 by gicamerl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	*mlx_int_xpm_f_image(t_xvar *xvar, int *width, int *height,
 	return (im2);
 }
 
-int	mlx_int_egal_img(XImage *img1, XImage *img2)
+int		mlx_int_egal_img(XImage *img1, XImage *img2)
 {
 	if (img1->width != img2->width || img1->height != img2->height ||
 			img1->xoffset != img2->xoffset || img1->format != img2->format ||
