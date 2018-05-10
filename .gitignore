@@ -15,5 +15,5 @@ obj
 # Debug files
 *.dSYM
 
-# Generate makefile
+# Generated Makefile
 *.gen
