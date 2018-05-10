@@ -6,7 +6,7 @@
 /*   By: gicamerl <gicamerl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 21:12:53 by gicamerl          #+#    #+#             */
-/*   Updated: 2018/04/30 17:16:10 by gicamerl         ###   ########.fr       */
+/*   Updated: 2018/05/10 16:52:18 by gicamerl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		mlx_int_str_str_cote(char *str, char *find, int len)
 	char	*f;
 	int		cote;
 
-	if ((len_f = ft_strlen(find)) > len)
+	if ((len_f = strlen(find)) > len)
 		return (-1);
 	cote = 0;
 	pos = 0;

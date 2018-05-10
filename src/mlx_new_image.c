@@ -6,7 +6,7 @@
 /*   By: gicamerl <gicamerl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 16:11:37 by gicamerl          #+#    #+#             */
-/*   Updated: 2018/04/30 18:10:23 by gicamerl         ###   ########.fr       */
+/*   Updated: 2018/05/10 16:53:08 by gicamerl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		mlx_X_error;
 
 int		shm_att_pb(Display *d, XErrorEvent *ev)
 {
-	if (ev->request_code == 146 && ev->minor_code == X_ShmAttach)
+	if (ev->request_code == 146 && ev->minor_code == X_SHMATTACH)
 		write(2, WARN_SHM_ATTACH, strlen(WARN_SHM_ATTACH));
 	mlx_X_error = 1;
 }
